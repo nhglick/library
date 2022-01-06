@@ -2,19 +2,22 @@ const container = document.querySelector('.container');
 let library = [];
 let rows = [];
 
-function Book(name, author, pages, read) {
-    this.name = name;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Book {
+    constructor(name, author, pages, read) {
+        this.name = name;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    toggleRead() {
+        if (this.read === true)
+            this.read = false;
+        else
+            this.read = true;
+    }
 }
 
-Book.prototype.toggleRead = function() {
-    if (this.read===true)
-        this.read = false;
-    else
-        this.read = true;
-}
 
 function addToLibrary() { 
     library.push(new Book(
@@ -25,6 +28,7 @@ function addToLibrary() {
 
     renderLibrary();
 }
+
 
 function renderLibrary() {
     let currRows = document.querySelectorAll('.row');
